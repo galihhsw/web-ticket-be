@@ -20,3 +20,10 @@ export const movieSchema = z.object({
     price: z.number().min(0, "Movie price is required"),
     bonus: z.string().optional(),
 }).strict();
+
+export const authSchema = z.object({
+    name: z.string().min(1, "name is required"),
+    email: z.string().min(1, "email is required"),
+    password: z.string().min(1, "password is required"),
+    role: z.enum(["admin","customer"])
+})

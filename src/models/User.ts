@@ -10,6 +10,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    password: {
+        type: String,
+        required: true
+    },
     photo: {
         type: String,
         required: true
@@ -21,7 +25,7 @@ const userSchema = new mongoose.Schema({
     }
 }, {
     virtuals: {
-            thumbnailUrl: {
+            photoUrl: {
                 get() {
                     return `${getAssetUrl('photos')}${this.photo}`;
                 }    
