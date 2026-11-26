@@ -1,3 +1,4 @@
+import { totalmem } from "os";
 import z from "zod";
 
 export const allowedFileTypes = ["image/jpeg", "image/png", "image/jpg"];
@@ -27,3 +28,18 @@ export const authSchema = z.object({
     password: z.string().min(1, "password is required"),
     role: z.enum(["admin","customer"])
 })
+
+export const topupSchema = z.object({
+    balance: z.number().min(5000)
+})
+
+export const transactionSchema= z.object({
+    subtotal: z.number(),
+    total: z.number(),
+    bookingFee: z.number(),
+    tax: z.number(),
+    movieId: z.string(),
+    theaterId: z.string(),
+    seats: z.array(z.string()),
+    date: z.string()
+}).strict();
